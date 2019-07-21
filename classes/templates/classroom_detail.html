@@ -8,9 +8,34 @@
   <div class="card-body">
     <h5 class="card-title" style="color: 000034;">{{classroom.name}} {{classroom.subject}}</h5>
     <p class="card-text" style="color: 000034;">{{classroom.year}}</p>
+
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Date of Birth</th>
+      <th scope="col">Exam Grade</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for student in students %}
+      <tr>
+        <th scope="row">{{student.id}}</th>
+        <td>{{student.name}}</td>
+        <td>{{student.date_of_birth}}</td>
+        <td>{{student.exam_grade}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+     <a href="{% url 'classroom-create' %}" class="btn" style="background-color: #000034; color: white;">Create</a>
+    <a href="{% url 'addstudent'%}" class="btn" style="background-color: #000034; color: white;">Add Student</a>
     <a href="{% url 'classroom-update' classroom.id %}" class="btn" style="background-color: #000034; color: white;">Update</a>
     <a href="{% url 'classroom-delete' classroom.id %}" class="btn" style="background-color: #FFA500; color: #000034;">Delete</a>
   </div>
+    
 </div>
 
 {% endblock content %}
